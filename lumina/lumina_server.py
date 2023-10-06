@@ -104,12 +104,10 @@ class BaseLuminaServer(ABC, ThreadingMixIn, TCPServer):
 
     def is_blacklisted(self, message):
         """
-        Return True if user is authozied, else False
+        Return whether of not a user is blacklisted
         """
         # check (message.hexrays_licence, message.hexrays_id, message.watermak, message.field_0x36)
-        # self.logger.debug("RPC client accepted")
-        self.logger.debug(f"Checking client {message.hexrays_id=}")
-        # Check if id is in whitelist
+        self.logger.debug(f"Checking if client {message.hexrays_id=} is blacklisted")
         return message.hexrays_id in []
 
     @abstractmethod
